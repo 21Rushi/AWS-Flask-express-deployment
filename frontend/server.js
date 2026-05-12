@@ -14,8 +14,9 @@ app.get("/", (req, res) => res.render("index"));
 
 app.post("/submit", async (req, res) => {
   try {
+    const BACKEND_URL = process.env.BACKEND_URL || "http://127.0.0.1:5000";
     const response = await axios.post(
-      "http://127.0.0.1:5000/submit",
+      `${BACKEND_URL}/submit`,
       req.body,
       { headers: { "Content-Type": "application/json" } }
     );
